@@ -1,101 +1,54 @@
+import Button from "@/components/Button";
+import Header from "@/components/Header";
+import Topheader from "@/components/Topheader";
+import data from '../data/data.json';
 import Image from "next/image";
+import {Exo,Comfortaa} from "next/font/google";
+import ProductCard from "@/components/ProductCard";
+import Link from "next/link";
+import Comment from "@/components/Comment";
+const exo=Exo({
+    subsets:["latin"],
+    weight:"400",
+    display:"swap",
+    variable:"--exo"
+  })
+  const comfortaa=Comfortaa({
+      subsets:["latin"],
+      weight:"400",
+      display:"swap",
+      variable:"--comfortaa"
+    })
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+    <>
+      <main className={exo.className}>
+      <div className="max-w-[3000px] sm:h-[700px] h-[400px] flex items-center justify-center relative"><Image src={"/Hero.png"} alt="hero" fill/>
+      <div className="lg:w-[30%] md:w-[50%] w-[70%] sm:h-[270px] h-[200px] z-10 bg-white/70 font-exo flex flex-col gap-4 items-center justify-center">
+        <p className="font-light text-sm">COSMETICS</p>
+        <p className="font-medium text-3xl text-center">BEST MAKE-UP PRODUCTS 2023</p>
+        <Button/>
+      </div>
+      </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+     {/* popular products */}
+      <div className="flex flex-col p-16 gap-16 items-center">
+        <main className={comfortaa.className}>
+        <h1 className="font-extrabold text-3xl text-center">POPULAR  POSTS</h1>
+        </main>
+        <div className="flex gap-16 flex-wrap justify-center mx-4">
+          {data.slice(0, 3).map((product)=>{
+            return(
+              <ProductCard key={product.id} imageUrl={product.imageUrl} heading={product.heading} id={product.id}/>
+            )
+          })}
+        </div>
+        <div><Link href={"/blogs"}><button className={`text-lg border-2 border-[#D9D9D9] px-6 py-2 ${comfortaa.className}`}>VIEW ALL</button></Link></div>
+
+      </div>
+
+    </>
+
   );
 }
