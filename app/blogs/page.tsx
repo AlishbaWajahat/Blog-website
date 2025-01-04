@@ -1,6 +1,6 @@
 
 import {Exo,Comfortaa} from "next/font/google";
-import data from '@/data/data.json';
+import data from '@/Data/data.json';
 
 import ProductCard from "@/components/ProductCard";
 import Comment from "@/components/Comment";

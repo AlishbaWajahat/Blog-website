@@ -1,12 +1,13 @@
 import Button from "@/components/Button";
 import Header from "@/components/Header";
 import Topheader from "@/components/Topheader";
-import data from '../data/data.json';
+import data from '@/Data/data.json';
 import Image from "next/image";
 import {Exo,Comfortaa} from "next/font/google";
 import ProductCard from "@/components/ProductCard";
 import Link from "next/link";
 import Comment from "@/components/Comment";
+
 const exo=Exo({
     subsets:["latin"],
     weight:"400",

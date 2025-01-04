@@ -1,7 +1,7 @@
 
 import Addcomment from '@/components/Addcomment';
 import Comment from '@/components/Comment';
-import data from '@/data/data.json';
+import data from '@/Data/data.json';
 import { Pacifico,Exo } from "next/font/google";
 const pacifico = Pacifico({
     subsets: ["latin"],
